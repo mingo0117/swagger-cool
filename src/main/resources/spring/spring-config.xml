@@ -1,0 +1,24 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 注解扫描包 -->
+    <context:component-scan base-package="com.mingo.**">
+    </context:component-scan>
+
+    <!-- 加载属性文件 -->
+    <bean class="com.mingo.helper.CustomizedPropertyConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:config/*.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--  用于程序中获取spring容器中已经配置的bean  -->
+    <bean class="com.mingo.helper.CommonUtil" />
+</beans>
